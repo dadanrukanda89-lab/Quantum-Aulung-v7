@@ -1,0 +1,20 @@
+# modules/engine.py
+# Bagian otak mesin Quantum-Aulung-v7
+
+def change_master_name():
+    """Ganti nama master dengan input pengguna."""
+    try:
+        nama = input("Masukkan nama master baru: ").strip()
+        if not nama:
+            print("[!] Nama kosong, batal mengubah.")
+            return None
+        return nama
+    except (KeyboardInterrupt, EOFError):
+        print("\n[!] Input dibatalkan.")
+        return None
+
+def cleanup_and_exit():
+    """Bersihkan resource sebelum keluar."""
+    print("[*] Membersihkan resource...")
+    print("[*] Selesai. Keluar dari sistem.")
+

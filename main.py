@@ -8,7 +8,7 @@ def main():
         inisialisasi_db()
         master_saat_ini = ambil_master()
         
-        # Kode Warna ANSI buat tampilan Hacker
+        # Variabel Warna
         G, B, Y, R = "\033[92m", "\033[94m", "\033[93m", "\033[0m"
         
         print(f"{B}====================================={R}")
@@ -34,14 +34,15 @@ def main():
             input(f"\n{Y}Tekan Enter untuk kembali...{R}")
         elif pilih == '3':
             print(f"{Y}\n[!] Sedang sinkronisasi data ke GitHub...{R}")
-            # Otomatisasi Git Command
+            # Perintah otomatisasi Git
             os.system("git add . && git commit -m 'Auto-sync: Quantum System Updated' && git push origin main")
             print(f"{G}[+] Semua data aman di GitHub. Bye!{R}")
             break
         else:
-            print("\033[91m[!] Pilihan salah, Bro! \033[0m")
+            print("\033[91m[!] Pilihan salah! \033[0m")
             import time
             time.sleep(1)
 
 if __name__ == "__main__":
     main()
+

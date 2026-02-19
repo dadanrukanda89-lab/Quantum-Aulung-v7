@@ -1,13 +1,14 @@
+
+
 import platform
 import shutil
 
 def get_sys_info():
-    # Cek sisa storage di HP
+    # Ambil info sisa storage
     total, used, free = shutil.disk_usage("/")
-    # Cek arsitektur prosesor
+    # Ambil info arsitektur/model sistem
     model = platform.machine()
     return {
         "storage": f"{free // (2**30)} GB",
         "model": model
     }
-
