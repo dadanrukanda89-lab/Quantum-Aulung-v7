@@ -1,0 +1,16 @@
+import os
+from modules.engine import cek_storage
+
+def dashboard():
+    os.system('clear')
+    print("="*35)
+    print("      QUANTUM AULUNG V7 PRO")
+    print("="*35)
+    print(f"Sisa Storage : {cek_storage()}")
+    print("Status       : Sistem Terenkripsi")
+    print("="*35)
+    print("\n[+] Proyek besar siap dikembangkan...")
+
+if __name__ == "__main__":
+    dashboard()
+

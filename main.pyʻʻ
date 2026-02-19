@@ -1,7 +1,0 @@
-print("==================================")
-print("   QUANTUM AULUNG V7 ONLINE      ")
-print("   Sistem Intelegensi Aktif...   ")
-print("==================================")
-
-user = input("Siapa namamu, User? ")
-print(f"Salam, {user}. Proyek peninggalan digital dimulai.")
