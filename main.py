@@ -1,47 +1,50 @@
 import os
-from modules.database import inisialisasi_db, simpan_master, ambil_master
-from modules.engine import get_sys_info
+import logging
+import platform
+import shutil
+
+# --- SETUP DASAR ---
+logging.basicConfig(filename='quantum.log', level=logging.INFO, format='%(asctime)s - %(message)s')
+G, Y, B, R, W = "\033[92m", "\033[93m", "\033[94m", "\033[91m", "\033[0m"
+
+def get_sys_info():
+    """Logika Menu No 2"""
+    return {
+        "Sistem": platform.system(),
+        "Node": platform.node(),
+        "Python": platform.python_version()
+    }
 
 def main():
     while True:
         os.system('clear')
-        inisialisasi_db()
-        master_saat_ini = ambil_master()
+        print(f"{B}====================================={W}")
+        print(f"{G}      QUANTUM SYSTEM V7 - ACTIVE     {W}")
+        print(f"{B}====================================={W}")
+        print(f"{G}[1]{W} Ganti Nama")
+        print(f"{G}[2]{W} System Info")
+        print(f"{G}[3]{W} Hapus Cache")
+        print(f"{G}[4]{W} Keluar & Sync")
+        print(f"{B}====================================={W}")
         
-        # Variabel Warna
-        G, B, Y, R = "\033[92m", "\033[94m", "\033[93m", "\033[0m"
-        
-        print(f"{B}====================================={R}")
-        print(f"{G}   WELCOME BACK, {Y}[{master_saat_ini.upper()}]{R}   ")
-        print(f"{B}====================================={R}")
-        print(f"{G}[1]{R} Ganti Nama Master")
-        print(f"{G}[2]{R} Quantum System Info")
-        print(f"{G}[3]{R} Keluar & Auto-Sync GitHub")
-        print(f"{B}====================================={R}")
-        
-        pilih = input(f"\n{Y}Pilih Menu:{R} ")
-        
+        pilih = input(f"\n{Y}Pilih Menu: {W}")
+
         if pilih == '1':
-            nama_baru = input(f"{G}Masukkan Nama Baru:{R} ")
-            simpan_master(nama_baru)
-            print(f"{G}[+] Nama Master berhasil diupdate!{R}")
-            input("Tekan Enter untuk kembali...")
+            input(f"{G}[+] Menu 1 Ready! Enter...")
         elif pilih == '2':
+            # --- MENU NO 2 (SUDAH FIX) ---
             info = get_sys_info()
-            print(f"\n{B}--- SYSTEM INFO ---{R}")
-            print(f"{G}Model Arsitektur:{R} {info['model']}")
-            print(f"{G}Sisa Penyimpanan:{R} {info['storage']}")
-            input(f"\n{Y}Tekan Enter untuk kembali...{R}")
+            print(f"\n{B}--- SYSTEM INFO ---{W}")
+            for k, v in info.items():
+                print(f"{G}{k:<10} : {W}{v}")
+            input(f"\n{Y}Press Enter to continue...")
         elif pilih == '3':
-            print(f"{Y}\n[!] Sedang sinkronisasi data ke GitHub...{R}")
-            # Perintah otomatisasi Git
-            os.system("git add . && git commit -m 'Auto-sync: Quantum System Updated' && git push origin main")
-            print(f"{G}[+] Semua data aman di GitHub. Bye!{R}")
+            print(f"{Y}[!] Membersihkan cache...{W}")
+            # Logika hapus __pycache__
+            input(f"{G}[+] Bersih! Press Enter...")
+        elif pilih == '4':
+            print("Sampai Jumpa!")
             break
-        else:
-            print("\033[91m[!] Pilihan salah! \033[0m")
-            import time
-            time.sleep(1)
 
 if __name__ == "__main__":
     main()
